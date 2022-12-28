@@ -7,13 +7,15 @@ const Modal = ({
     animarModal,
     setAnimarModal,
     guardarGasto,
-    gastoeditar
+    gastoeditar,
+    setGastoeditar
     }) => {
 
     const [mensaje, setMensaje] = useState("")
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState(0)
+    const [fecha, setFecha] = useState("")
     const [id, setId] = useState("")
 
     useEffect(() => {
@@ -22,12 +24,14 @@ const Modal = ({
             setCantidad(gastoeditar.cantidad)
             setCategoria(gastoeditar.categoria)
             setId(gastoeditar.id)
+            setFecha(gastoeditar.fecha)
           }
     }, [])
     
 
     const ocultarModal = () =>{    
         setAnimarModal(false)
+        setGastoeditar({})
 
         setTimeout(() => {
             setModal(false)
@@ -44,7 +48,7 @@ const Modal = ({
             }, 3000);
             return
         }
-        guardarGasto({nombre,cantidad,categoria,id})
+        guardarGasto({nombre,cantidad,categoria,id,fecha})
     }
 
   return (
