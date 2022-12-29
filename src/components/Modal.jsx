@@ -41,7 +41,7 @@ const Modal = ({
     const handleSubmit = (e) =>{
         e.preventDefault()
         
-        if([nombre,cantidad,categoria].includes("")){
+        if([nombre,cantidad,categoria].includes("") || cantidad == 0 || categoria == "nada"){
             setMensaje("Todos los campos son obligatorios")
             setTimeout(() => {
                 setMensaje("")
@@ -95,7 +95,7 @@ const Modal = ({
                     value={categoria}
                     onChange={e => setCategoria(e.target.value)}  
                 >
-                    <option value="">-- Seleccione --</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="ahorro">Ahorro</option>
                     <option value="comida">Comida</option>
                     <option value="casa">Casa</option>
